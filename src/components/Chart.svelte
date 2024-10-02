@@ -1,41 +1,87 @@
 <script>
     export let data = [];
-    export let value = '';
 
     // LIBS
     import { onMount } from 'svelte';
 
     // COMPONENTS
-    import Tooltip from '$components/Tooltip.svelte';
 
     // VARS
-    let tooltipData;
     let width = 500;
     let height = 500;
 
-    const margin = {
-		top: 20,
-		right: 20,
-		bottom: 20,
-		left: 20 
-	};
-    $: console.log(data);
+
+    $: console.log(data)
+    $: cons = data.length > 0 ? numberWithCommas(data.filter(d => d.page_name === 'Conservative')[0].total) : null;
+    $: ndp = data.length > 0 ? numberWithCommas(data.filter(d => d.page_name === 'NDP')[0].total) : null;
+    $: green = data.length > 0 ? numberWithCommas(data.filter(d => d.page_name === 'Green')[0].total) : null;
+
+    $: console.log(ndp)
+    $: console.log(green)
 
     // FUNCTIONS
-    function init() {
-        console.log('CHART INIT!')
-    }
-    function addCommasToNumber(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    // LIGHTS! CAMERA! ACTION!
-    onMount(init);
+    function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 </script>
 
-<pre>{`CHART: Resolved data = ${JSON.stringify(data)}`}</pre>
-<pre>CHART: Combobox value = {value || 'No selection'}</pre>
 
 <div class="chart-container" bind:clientWidth={width}>
-
+    <div class="list">
+        <div class="ndp">
+            <p class="party">NDP</p>
+            <h1>${ndp}</h1> 
+        </div>
+        <div class="cons">
+            <p class="party">Conservative</p>
+            <h1>${cons}</h1> 
+        </div>
+        <div class="green">
+            <p class="party">Green</p>
+            <h1>${green}</h1>
+        </div>
+    </div>
+    <p class="timestamp">As of Sept. 21</p>
 </div>
+
+<style>
+    .chart-container {
+        margin-bottom: 25px;
+    }
+    .list {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 5px;
+    }
+    #app .chart-container h1 {
+        font-size: 1.75rem;
+    }
+    #app .chart-container .party {
+        margin-bottom: 5px;
+    }
+    #app .chart-container .ndp .party,
+    #app .chart-container .ndp h1 {
+        color: #FD4E27;
+    }
+    #app .chart-container .green .party,
+    #app .chart-container .green h1 {
+        color: #009A44;
+    }
+    #app .chart-container .cons .party,
+    #app .chart-container .cons h1 {
+        color: #004AAD;
+    }
+    #app .chart-container .party {
+        color: var(--grey03);
+        font-size: 0.95rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    #app .chart-container .timestamp {
+        color: var(-grey02);
+        font-family: 'BentonSansCond-RegItalic', italic;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+</style>

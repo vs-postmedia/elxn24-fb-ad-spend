@@ -3,70 +3,47 @@
     import { onMount } from 'svelte';
     import { csvParse } from 'd3-dsv';
     import Chart from "$components/Chart.svelte";
-    import Select from "svelte-select"; // https://github.com/rob-balfre/svelte-select
 
     
 
     // DATA
-    // import data from "$data/data.js";
-    import { menuItems } from "$data/menu-items";
-    const dataUrl = 'https://raw.githubusercontent.com/ajstarks/dubois-data-portraits/master/challenge/2024/challenge03/data.csv';
+    const dataUrl = 'https://vs-postmedia-data.sfo2.digitaloceanspaces.com/elxn/elxn2024/total-fb-ad-spend.csv';
 
     // VARIABLES
     let data, value;
-    const defaultSelectValue = menuItems[0].value;
-
-    // REACTIVE VARIABLES
-    $: value, updateData(value);
 
     async function fetchData(url) {
         const resp = await fetch(url);
-        data = await resp.text();
+        const data = await resp.text();
+        
         return csvParse(data);
-    }
-
-
-    function updateData(value) {
-        if (!value || !value.value) return;
-
-        console.log(value);
     }
 
     async function init() {
         // fetch remote data
         data = await fetchData(dataUrl);
-        // console.log(data);
-
-        // default display selector value
-		value = defaultSelectValue;
     }
 
     onMount(init);
 </script>
 
 <header>
-    <h1>VS SvelteKit Template</h1>
-    <p class="subhead">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+    <h1>Ad spending for B.C.’s 2024 election on Meta</h1>
+    <!-- <p class="subhead">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p> -->
 </header>
 
 <main>
-    <Select items={menuItems}
-        bind:value
-        change={updateData}
-        placeholder="Pick a city..."
-		showChevron="true"
-		listOpen={false}
-    />
-    
-    <Chart 
-        data={data}
-        value={value}
-    />
+    <h2>Total amount spent</h2>
+    <Chart data={data} />
+
+    <h2>Daily ad spending</h2>
+    <!-- <p> ($000’s)</p> -->
+    <iframe src='https://flo.uri.sh/visualisation/19631149/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:350px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
 </main>
 
 <footer>
-    <p class="note">NOTE: tk.</p>
-    <p class="source">Source:  <a href="https:vancouversun.com" target="_blank">TK</a></p>
+    <p class="note">NOTE: Data includes spending by the official Facebook pages for each party. The minimum daily total provided by Facebook is $100, so expenditures may have been less on days showing $100. Data includes ads placed on Facebook, Instagram, WhatsApp and Messenger.</p>
+    <p class="source">Source:  <a href="https://www.facebook.com/ads/library/report/?source=onboarding" target="_blank">Facebook Ad Library</a></p>
 </footer>
   
 <style>
@@ -79,6 +56,7 @@
 		margin-bottom: 2rem;
 	}
 	header > h1 {
+        line-height: 1.3;
 		text-align: center;
 	}
 	header .subhead {
@@ -86,21 +64,9 @@
 		max-width: 525px;
 		text-align: center;
 	}
-
-    /* COMBOBOX SELECTOR */
-  	:global(.svelte-select) {
-		margin: 1rem auto !important;
-		max-width: 250px;
-  	}
-  	:global(input:focus) {
-		outline: none;
-  	}
-
-	:global(
-		.svelte-select .selected-item,
-		.svelte-select .item,
-		.svelte-select input
-	) {
-		font-family: 'BentonSansCond-Regular', sans;
-	}
+    #app main h2 {
+        font-size: 1.35rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
 </style>
