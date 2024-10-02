@@ -28,7 +28,7 @@
 </script>
 
 <header>
-    <h1>Ad spending on Meta in B.C.’s 2024 election</h1>
+    <h1>B.C. election ad spending on Meta platforms</h1>
     <!-- <p class="subhead">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p> -->
 </header>
 
