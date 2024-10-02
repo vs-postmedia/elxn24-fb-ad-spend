@@ -4,20 +4,14 @@
     // LIBS
     import { onMount } from 'svelte';
 
-    // COMPONENTS
-
     // VARS
     let width = 500;
-    let height = 500;
-
 
     $: console.log(data)
     $: cons = data.length > 0 ? numberWithCommas(data.filter(d => d.page_name === 'Conservative')[0].total) : null;
     $: ndp = data.length > 0 ? numberWithCommas(data.filter(d => d.page_name === 'NDP')[0].total) : null;
     $: green = data.length > 0 ? numberWithCommas(data.filter(d => d.page_name === 'Green')[0].total) : null;
-
-    $: console.log(ndp)
-    $: console.log(green)
+    
 
     // FUNCTIONS
     function numberWithCommas(x) {
