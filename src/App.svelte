@@ -42,7 +42,7 @@
 </main>
 
 <footer>
-    <p class="note">NOTE: Data includes spending by the official Facebook pages for each party. The minimum daily total provided by Facebook is $100, so expenditures may have been less on days showing $100. Data includes ads placed on Facebook, Instagram, WhatsApp and Messenger.</p>
+    <p class="note">NOTE: Data includes ads identified as paid for by the three parties and covers ads placed on Facebook, Instagram, WhatsApp and Messenger. Ads purchased by the campaigns of individual candidates are not included.</p>
     <p class="source">Source:  <a href="https://www.facebook.com/ads/library/report/?source=onboarding" target="_blank">Facebook Ad Library</a></p>
 </footer>
   

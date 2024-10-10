@@ -78,4 +78,10 @@
         font-size: 0.8rem;
         text-align: center;
     }
+
+    @media screen and (min-width: 500px) {
+        #app .chart-container h1 {
+            font-size: 2.25rem;
+        }
+    }
 </style>

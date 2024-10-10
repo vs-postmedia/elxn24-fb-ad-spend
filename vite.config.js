@@ -7,8 +7,8 @@ const projectPath = '/elxn24-fb-ad-spend/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base: '/svelte-template/',
-  base: process.env.MODE === 'production' ? projectPath : '/',
+  base: '/elxn24-fb-ad-spend/',
+  // base: process.env.MODE === npm'production' ? projectPath : '/',
   plugins: [svelte()],
   resolve: {
     alias: {
