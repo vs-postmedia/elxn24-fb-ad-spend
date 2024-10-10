@@ -28,7 +28,7 @@
 </script>
 
 <header>
-    <h1>B.C. election ad spending on Meta platforms</h1>
+    <h1>B.C. election ad spending on Facebook</h1>
     <!-- <p class="subhead">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p> -->
 </header>
 
@@ -38,7 +38,7 @@
 
     <h2>Daily ad spending</h2>
     <!-- <p> ($000’s)</p> -->
-    <iframe src='https://flo.uri.sh/visualisation/19631149/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:350px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+    <iframe src='https://flo.uri.sh/story/2650140/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:350px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
 </main>
 
 <footer>
